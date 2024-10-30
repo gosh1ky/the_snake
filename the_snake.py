@@ -37,6 +37,7 @@ pygame.display.set_caption('Змейка')
 # Настройка времени:
 clock = pygame.time.Clock()
 
+
 class GameObject:
     """Базовый класс для игровых объектов."""
 
@@ -55,6 +56,7 @@ class GameObject:
         Предназначен для переопределения в дочерних классах.
         """
         pass
+
 
 class Apple(GameObject):
     """Класс для яблока."""
@@ -75,6 +77,7 @@ class Apple(GameObject):
         rect = pygame.Rect(self.position, (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(screen, self.body_color, rect)
         pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
+
 
 class Snake(GameObject):
     """Класс для змейки."""
@@ -153,6 +156,7 @@ class Snake(GameObject):
         self.next_direction = None
         self.last = None
 
+
 def handle_keys(game_object):
     """Обрабатывает нажатия клавиш."""
     for event in pygame.event.get():
@@ -164,17 +168,18 @@ def handle_keys(game_object):
                 pygame.quit()
                 raise SystemExit
             elif (event.key == pygame.K_UP
-                    and game_object.direction != 'DOWN'):
+                  and game_object.direction != 'DOWN'):
                 game_object.next_direction = 'UP'
             elif (event.key == pygame.K_DOWN
-                    and game_object.direction != 'UP'):
+                  and game_object.direction != 'UP'):
                 game_object.next_direction = 'DOWN'
             elif (event.key == pygame.K_LEFT
-                    and game_object.direction != 'RIGHT'):
+                  and game_object.direction != 'RIGHT'):
                 game_object.next_direction = 'LEFT'
             elif (event.key == pygame.K_RIGHT
-                    and game_object.direction != 'LEFT'):
+                  and game_object.direction != 'LEFT'):
                 game_object.next_direction = 'RIGHT'
+
 
 def main():
     """
@@ -206,6 +211,7 @@ def main():
         pygame.display.update()
 
         clock.tick(SPEED)
+
 
 if __name__ == '__main__':
     main()
